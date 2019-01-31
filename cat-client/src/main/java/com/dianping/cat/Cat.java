@@ -380,6 +380,7 @@ public class Cat {
 		* logRemoteCallClient is used in rpc client
 		*
 		* @param ctx    ctx is rpc context ,such as duboo context , please use rpc context implement Context
+		* @param domain domain is default, if use default config, the performance of server storage is bad。
 		*/
 	public static void logRemoteCallClient(Context ctx) {
 		logRemoteCallClient(ctx, "default");
@@ -465,7 +466,7 @@ public class Cat {
 	}
 
 	public static <T> T lookup(Class<T> role, String hint) throws ComponentLookupException {
-		return (T)s_instance.m_container.lookup(role, hint);
+		return s_instance.m_container.lookup(role, hint);
 	}
 
 	public static Event newEvent(String type, String name) {
@@ -547,8 +548,8 @@ public class Cat {
 	void setContainer(PlexusContainer container) {
 		try {
 			m_container = container;
-			m_manager = (MessageManager)container.lookup(MessageManager.class);
-			m_producer = (MessageProducer)container.lookup(MessageProducer.class);
+			m_manager = container.lookup(MessageManager.class);
+			m_producer = container.lookup(MessageProducer.class);
 		} catch (ComponentLookupException e) {
 			throw new RuntimeException(
 									"Unable to get instance of MessageManager, "	+ "please make sure the environment was setup correctly!", e);
