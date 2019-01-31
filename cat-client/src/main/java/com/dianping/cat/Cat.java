@@ -380,7 +380,6 @@ public class Cat {
 		* logRemoteCallClient is used in rpc client
 		*
 		* @param ctx    ctx is rpc context ,such as duboo context , please use rpc context implement Context
-		* @param domain domain is default, if use default config, the performance of server storage is bad。
 		*/
 	public static void logRemoteCallClient(Context ctx) {
 		logRemoteCallClient(ctx, "default");
