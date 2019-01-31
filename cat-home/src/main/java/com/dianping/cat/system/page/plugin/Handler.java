@@ -154,7 +154,7 @@ public class Handler implements PageHandler<Context> {
 		HttpServletResponse res = ctx.getHttpServletResponse();
 		String file = payload.getFile();
 
-		if (StringUtils.isNotBlank(file)) {
+		if (org.apache.commons.lang.StringUtils.isNotBlank(file)) {
 			InputStream is = getClass().getResourceAsStream("/doc/" + file);
 
 			res.setContentType("application/octet-stream");
